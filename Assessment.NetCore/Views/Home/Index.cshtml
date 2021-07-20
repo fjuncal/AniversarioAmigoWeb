@@ -1,0 +1,64 @@
+﻿@using Microsoft.AspNetCore.Mvc.Routing
+@using Assessment.NetCore.Controllers
+@model List<Assessment.NetCore.Models.Amigo>;
+@{
+    ViewData["Title"] = "Home Page";
+    var listaDeAmigos = Model;
+}
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Index</title>
+
+</head>
+<body>
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th scope="col">Nome</th>
+    <th scope="col">Sobrenome</th>
+    <th scope="col">Data Aniversário</th>
+    <th scope="col">Ações</th>
+  </tr>
+  </thead>
+  <tbody>
+  @foreach (var amigo in listaDeAmigos)
+  {
+
+    <tr>
+      <td>@amigo.nome</td>
+      <td>@amigo.sobrenome</td>
+      <td>@amigo.dataDeNascimento</td>
+      <td>
+        <form action="/editarAmigo" method="post">
+          <input type="hidden" value="@amigo.id" name="id">
+          <input type="submit" class="btn btn-primary" value="Editar">
+        </form>
+        <form action="/removerAmigo" method="post">
+          <input type="hidden" value="@amigo.id" name="id">
+          <input type="submit" class="btn btn-danger" value="Remover">
+        </form>
+      </td>
+    </tr>
+  }
+  </tbody>
+</table>
+
+<h4>Aniversariantes do dia: </h4>
+
+  @foreach (var amigo in listaDeAmigos)
+  {
+    if (amigo.dataDeNascimento == DateTime.Today)  
+    {
+      <ul>
+        <l1>Nome: @amigo.nome @amigo.sobrenome</l1>
+      </ul>
+    }
+  }
+
+
+</body>
+</html>

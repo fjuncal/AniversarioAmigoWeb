@@ -1,0 +1,62 @@
+﻿@model Amigo
+
+@{
+    Layout = null;
+    var amigo = Model;
+}
+
+<!DOCTYPE html>
+
+<html lang="pt-br">
+<head>
+  <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="~/css/site.css"/>
+  <title>Editar Amigo</title>
+</head>
+<body>
+<div>
+  <header>
+      <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+          <div class="container">
+              <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Agenda de Aniversários</a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                      aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                  <ul class="navbar-nav flex-grow-1">
+                      <li class="nav-item">
+                          <a class="nav-link text-dark" asp-area="" asp-controller="Amigo" asp-action="CadastroAniversarioAmigos">Cadastrar</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link text-dark" asp-area="" asp-controller="Amigo" asp-action="ListaCompletaAmigos">Lista Completa</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </nav>
+  </header>
+    <form method="post" action="/confirmarEdicao">
+        <input type="hidden" value="@amigo.id" name="id">
+        <div class="form-group">
+            <div class="col-md-4 mb-3">
+                <label>Nome</label>
+                <input type="text" class="form-control " name="nome" value="@amigo.nome" required>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label>Sobrenome</label>
+                <input type="text" class="form-control" name="sobrenome" value="@amigo.sobrenome" required>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label>Data de Nascimento</label>
+                <input type="date" class="form-control" name="dataDeNascimento" value="@amigo.dataDeNascimento" required>
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Cadastrar</button>
+    </form>
+</div>
+</body>
+</html>

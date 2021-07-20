@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assessment.NetCore", "Assessment.NetCore\Assessment.NetCore.csproj", "{6677BD22-8D49-42EA-9F79-23F98E6464FF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6677BD22-8D49-42EA-9F79-23F98E6464FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6677BD22-8D49-42EA-9F79-23F98E6464FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6677BD22-8D49-42EA-9F79-23F98E6464FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6677BD22-8D49-42EA-9F79-23F98E6464FF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

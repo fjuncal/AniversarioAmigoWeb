@@ -1,0 +1,84 @@
+﻿@model List<Assessment.NetCore.Models.Amigo>;
+
+@{
+    Layout = null;
+    var listaDeAmigos = Model;
+}
+
+<!DOCTYPE html>
+
+<html lang="pt-br">
+<head>
+  <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="~/css/site.css"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Lista Aniversariantes</title>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container">
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Agenda de Aniversários</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Amigo" asp-action="CadastroAniversarioAmigos">Cadastrar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Amigo" asp-action="ListaCompletaAmigos">Lista Completa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<form class="form-inline" method="get" action="/pesquisarAmigo">
+    <div class="form-group mx-sm-3 mb-2">
+        <input type="text" class="form-control" name="nome" placeholder="Nome">
+    </div>
+    <button type="submit" class="btn btn-primary mb-2">Pesquisar</button>
+</form>
+<div>
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th scope="col">Nome</th>
+      <th scope="col">Sobrenome</th>
+      <th scope="col">Data Aniversário</th>
+      <th scope="col">Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var amigo in listaDeAmigos)
+    {
+
+      <tr>
+        <td>@amigo.nome</td>
+        <td>@amigo.sobrenome</td>
+        <td>@amigo.dataDeNascimento</td>
+        <td>
+          <form action="/editarAmigo" method="post">
+            <input type="hidden" value="@amigo.id" name="id">
+            <input type="submit" class="btn btn-primary" value="Editar">
+          </form>
+          <form action="/removerAmigoListaCompleta" method="post">
+            <input type="hidden" value="@amigo.id" name="id">
+            <input type="submit" class="btn btn-danger" value="Remover">
+          </form>
+        </td>
+      </tr>
+    }
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
